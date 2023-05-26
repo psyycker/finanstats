@@ -1,5 +1,6 @@
 from finanstats.database import Database
 from finanstats.model.dividend import Dividend
+from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 
 class DividendDao:
@@ -26,12 +27,15 @@ class DividendDao:
         session = self.db.get_session()
         try:
             for date, dividend in dividends.items():
-                entry = Dividend(
+                insert_stmt = pg_insert(Dividend).values(
                     date=date,
                     amount=dividend,
                     ticker=ticker
                 )
-                session.add(entry)
+                do_nothing_stmt = insert_stmt.on_conflict_do_nothing(
+                    index_elements=['date', 'ticker']
+                )
+                session.execute(do_nothing_stmt)
             session.commit()
         except:
             session.rollback()

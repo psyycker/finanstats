@@ -1,5 +1,4 @@
 from finanstats.daos.dividend_dao import DividendDao
-from finanstats.database import Database
 from finanstats.ticker_service import TickerService
 
 
