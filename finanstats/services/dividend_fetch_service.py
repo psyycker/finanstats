@@ -1,5 +1,5 @@
 from finanstats.daos.dividend_dao import DividendDao
-from finanstats.ticker_service import TickerService
+from finanstats.services.ticker_service import TickerService
 
 
 def fetch_dividends(ticker):

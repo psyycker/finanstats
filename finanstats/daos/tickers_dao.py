@@ -1,5 +1,5 @@
 from finanstats.database import Database
-from finanstats.model.Ticker import Ticker
+from finanstats.model.ticker import Ticker
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 

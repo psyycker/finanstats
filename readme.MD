@@ -6,3 +6,6 @@ To start the DB, make sure that Docker is installed and run `docker-compose up -
 ### Update to latest migration version
 Make sure that all dependencies are installed with `pip install -r requirements.txt` <br/>
 Then run `alembic upgrade head`
+
+## Useful links:
+All tickers: https://www.cboe.com/us/equities/market_statistics/listed_symbols/
