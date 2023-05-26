@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: finanstats_user
+      POSTGRES_PASSWORD: finanstats_password
+      POSTGRES_DB: finanstats
+    ports:
+      - "5444:5432"

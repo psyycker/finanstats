@@ -2,3 +2,6 @@ pip~=23.1.2
 wheel==0.40.0
 setuptools==67.8.0
 yfinance~=0.2.18
+psycopg2-binary~=2.9.6
+alembic~=1.11.1
+sqlalchemy~=2.0.15

@@ -14,3 +14,6 @@ class TickerService:
 
     def get_history(self, period):
         return self.__data.history(period)
+
+    def get_dividends(self):
+        return self.__data.dividends
