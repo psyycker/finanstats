@@ -1,6 +1,6 @@
 from finanstats.daos.tickers_dao import TickersDao
 from finanstats.services.dividend_fetch_service import fetch_dividends
-from finanstats.services.history_service import fetch_history
+from finanstats.services.history_service import fetch_history, linear_regression
 
 
 def update_dividends(tickers):
@@ -20,6 +20,7 @@ def update_history(tickers):
 
 if __name__ == '__main__':
     # fetch_and_save_tickers()
-    tickers = TickersDao().get_all_ticker()
-    update_history(tickers)
+    # tickers = TickersDao().get_all_ticker()
+    # update_history(tickers)
+    linear_regression("MSFT")
     # update_dividends(tickers)
