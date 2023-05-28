@@ -15,6 +15,9 @@ class TickerService:
     def get_history(self):
         return self.__data.history(interval="1d", period="max")
 
+    def get_history_from(self, start_date):
+        return self.__data.history(interval="1d", period=max, start=start_date)
+
     def get_history_from_date(self, start_date):
         return self.__data.history(start=start_date)
 

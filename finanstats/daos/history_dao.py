@@ -1,5 +1,5 @@
+from sqlalchemy import text
 from finanstats.database import Database
-from finanstats.model.dividend import Dividend
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 from finanstats.model.history_data_point import HistoryDataPoint
@@ -8,6 +8,19 @@ from finanstats.model.history_data_point import HistoryDataPoint
 class HistoryDao:
     _instance = None
     db = Database.get_instance()
+
+    def get_most_recent_data_point(self, ticker):
+        session = self.db.get_session()
+        try:
+            result = session.execute(
+                text("""
+                SELECT MAX(date) as latest_date FROM history_data_points WHERE ticker = :ticker
+            """), {"ticker": ticker})
+            return result.fetchone()
+        except:
+            raise
+        finally:
+            session.close()
 
     def create_dividends_from_series(self, history, ticker):
         session = self.db.get_session()
